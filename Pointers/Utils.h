@@ -63,4 +63,45 @@ void indirection_operator() {
   return;
 }
 
+void display_first_array_emenent() {
+  int numbers[] = {1, 3, 4, 5, 6};
+  std::cout << "The first element of the array is: ";
+  std::cout << *numbers <<  std::endl;
+}
+
+void print_array_using_pointer() {
+  const int SIZE = 5;
+  int numbers[SIZE];
+  int count;
+
+  std::cout << "Please enter " << SIZE << " numbers: ";
+  for(count=0;count<SIZE;count++) {
+    std::cin >> *(numbers + count);
+  }
+
+  //display the array using pointer notation
+  std::cout << "Here are the numbers you had entered.\n";
+  for(count=0;count<SIZE;count++) {
+    std::cout << *(numbers + count) << " ";
+  }
+  std::cout << "\nThe array is finished.\n";
+  return;
+}
+
+void print_array_using_pointer_subscript() {
+  const int NUM_COINS = 5;
+  double coins[NUM_COINS] = {0.05, 0.1, 0.25, 0.5, 1.0};
+  double *doublePtr = coins;
+  int count;
+  std::cout << "Pointer using array subscript notation to access the elements.\n";
+  for(count=0;count<NUM_COINS;count++) {
+    std::cout << doublePtr[count] << " ";
+  }
+
+  std::cout << "\nArray using pointer arithmetic.\n";
+  for(count=0;count<NUM_COINS;count++) {
+    std::cout << *(coins + count) << " ";
+  }
+}
+
 #endif

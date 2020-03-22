@@ -2,6 +2,6 @@
 #include "Utils.h"
 
 int main() {
-  indirection_operator();
+  print_array_using_pointer_subscript();
   return 0;
 }
