@@ -1,10 +1,14 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <iomanip>
+#include <cstdlib> //for rand and srand
+#include <ctime> // for the time function
 
 void display_pay_rates(const double*, int);
 void process_sales();
 void process_dynamic_sales();
+void create_random_num_array();
+int* get_random_numbers(int);
 
 void displayVariableInfo(int val) {
   std::cout << "The address of variable is " << &val << std::endl;
@@ -242,6 +246,27 @@ void process_dynamic_sales() {
   delete [] sales;
   sales=0;
   return;
+}
+
+void create_random_num_array() {
+  int *numbers;
+  //get an array of five random numbers
+  numbers = get_random_numbers(5);
+  
+  //display the numbers
+  delete [] numbers;
+  numbers=0;
+}
+
+int* get_random_numbers(int size) {
+  int *arr;
+  if(size <= 0) return NULL;
+  arr = new int[size];
+  std::srand(std::time(0));
+  for(int count = 0; count < size; count++) {
+    *(arr + count) = std::rand();
+  }
+  return arr;
 }
 
 

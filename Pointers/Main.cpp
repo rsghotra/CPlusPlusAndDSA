@@ -2,6 +2,6 @@
 #include "Utils.h"
 
 int main() {
-  process_dynamic_sales();
+  create_random_num_array();
   return 0;
 }
