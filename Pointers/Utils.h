@@ -164,4 +164,28 @@ void getValue(int *input) {
   std::cin >> *input;
 }
 
+double total_sales(double *ptr, int size) {
+  double total = 0;
+  for(int count = 0; count < size; count++) {
+    total += *(ptr + count);
+  }
+  return total;
+}
+
+void get_sales(double *ptr, int size) {
+  //mix nahi kerna pointer hai to pointer arithmetic.
+  for(int count = 0; count < size; count++) {
+    std::cout << "Enter your sales for " << (count+1) << " quarter." << std::endl;
+    std::cin >> *(ptr + count);
+  }
+}
+
+//this program demostrated use of pointer as paramter to accept the address of an array.
+void process_sales() {
+  const int QTRS = 4;
+  double sales[QTRS];
+  //get_sales data for each quarter;
+  get_sales(sales, QTRS);
+  std::cout << "Total sales for the year are: " << total_sales(sales, QTRS);
+}
 #endif

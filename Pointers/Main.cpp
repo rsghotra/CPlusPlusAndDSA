@@ -2,9 +2,6 @@
 #include "Utils.h"
 
 int main() {
-  int number;
-  getValue(&number);
-  doubleValue(&number);
-  std::cout << "Number is: " << number;
+  process_sales();
   return 0;
 }
