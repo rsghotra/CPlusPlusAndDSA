@@ -1,5 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
+#include <iomanip>
+
+void display_pay_rates(const double*, int);
+void process_sales();
+void process_dynamic_sales();
 
 void displayVariableInfo(int val) {
   std::cout << "The address of variable is " << &val << std::endl;
@@ -187,5 +192,57 @@ void process_sales() {
   //get_sales data for each quarter;
   get_sales(sales, QTRS);
   std::cout << "Total sales for the year are: " << total_sales(sales, QTRS);
+  const int SIZE = 6;
+  const double payRates[SIZE] = {18.55, 17.45,
+                                 12.85, 14.97,
+                                 10.35, 18.89};
+  display_pay_rates(payRates, SIZE);
+  double age[SIZE] =            {18, 17,
+                                 12, 97,
+                                 10, 89};
+  display_pay_rates(age, SIZE);
 }
+
+void display_pay_rates(const double *ptr, int size) {
+  std::cout << std::setprecision(2) << std::fixed << std::showpoint;
+  for(int count = 0; count < size; count++) {
+    std::cout << "Pay rate for employee " << (count + 1) << " " << *(ptr + count) << std::endl;
+  }
+}
+
+//this function set the value passed to it to zero
+void setToZero(int * const ptr) {
+  *ptr = 0;
+  int value = 25;
+  const int * const pt = &value;
+  std::cout << *pt << std::endl;
+}
+
+//this function calculates totals and avg of the sales figures for any number of days.
+void process_dynamic_sales() {
+  double *sales;
+  double total;
+  double average;
+
+  int numDays, count;
+  std::cout << "How many days of sales figurs do you wish ";
+  std::cout << "to process?" << std::endl;
+  std::cin >> numDays;
+
+  sales = new double[numDays];
+  for(count=0; count < numDays; count++) {
+    std::cin >> *(sales + count);
+  }
+
+  for(count=0; count < numDays; count++) {
+    total += *(sales + count);
+  }
+  std::cout << "Total sales is: " << total << std::endl;
+  std::cout << "Average of sales is: " << (total/numDays) << std::endl;
+  delete [] sales;
+  sales=0;
+  return;
+}
+
+
 #endif

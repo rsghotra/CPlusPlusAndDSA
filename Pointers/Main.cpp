@@ -2,6 +2,6 @@
 #include "Utils.h"
 
 int main() {
-  process_sales();
+  process_dynamic_sales();
   return 0;
 }
