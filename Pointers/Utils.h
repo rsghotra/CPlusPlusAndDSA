@@ -104,4 +104,64 @@ void print_array_using_pointer_subscript() {
   }
 }
 
+void print_array_using_address_of_elements() {
+  const int NUM_COINS = 5;
+  double coins[NUM_COINS] = {0.05, 0.1, 0.25, 0.5, 1.0};
+  double *doublePtr;
+  int count;
+  std::cout << "\nDisplaying Array using address& operator on each element of array.\n";
+  for(count=0;count<NUM_COINS;count++) {
+    doublePtr = &coins[count];
+    std::cout << *doublePtr << " ";
+  }
+  std::cout << std::endl;
+}
+
+void print_reverse_array_using_pointer() {
+  const int NUM_COINS = 5;
+  double coins[NUM_COINS] = {0.05, 0.1, 0.25, 0.5, 1.0};
+  double *doublePtr = coins;
+  int count;
+  std::cout << "\nDisplaying Array in reverse order.\n";
+  for(count=0;count<NUM_COINS;count++) {
+    doublePtr++;
+  }
+  for(count=0;count<NUM_COINS;count++) {
+    doublePtr--;
+    std::cout << *doublePtr << " "; 
+  }
+  std::cout << std::endl;
+}
+
+//this function displays the array in reverse order by comparing pointer address.
+void print_array_in_reverse_using_ptr_comparison() {
+  int set[8] = {52, 47,56, 3, 4, 2, 1, 5};
+  int *nums = set;
+  //display the array.
+  std::cout << "The numbers in the array are: " << std::endl;
+  std::cout << *nums << " ";
+
+  while(nums < &set[7]) {
+    nums++;
+    std::cout << *nums << " ";
+  }
+
+  std::cout << "\nDisplaying the number in backward order: " << std::endl;
+  std::cout << *nums << " ";
+  while(nums > set) {
+    nums--;
+    std::cout << *nums << " ";
+  }
+  return;
+}
+
+void doubleValue(int *val) {
+  *val *= 2;
+}
+
+void getValue(int *input) {
+  std::cout << "Enter your number: ";
+  std::cin >> *input;
+}
+
 #endif

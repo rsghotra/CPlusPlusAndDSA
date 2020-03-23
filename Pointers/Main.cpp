@@ -2,6 +2,9 @@
 #include "Utils.h"
 
 int main() {
-  print_array_using_pointer_subscript();
+  int number;
+  getValue(&number);
+  doubleValue(&number);
+  std::cout << "Number is: " << number;
   return 0;
 }
