@@ -252,7 +252,9 @@ void create_random_num_array() {
   int *numbers;
   //get an array of five random numbers
   numbers = get_random_numbers(5);
-  
+  for(int count=0; count < 5; count++) {
+    std::cout << *(numbers + count) << std:: endl;
+  }
   //display the numbers
   delete [] numbers;
   numbers=0;
@@ -269,5 +271,102 @@ int* get_random_numbers(int size) {
   return arr;
 }
 
+int * duplication(int *arr, int size) {
+  if(size <= 0 ) return NULL;
+  int *dupPtr = new int[size];
+  for(int count=0; count < size ; count++) {
+    *(dupPtr + count) = *(arr + count);
+  }
+  return dupPtr;
+}
+
+void display_array(const int *arr, const int size) {
+  for(int count=0; count < size; count++) {
+    std::cout << *(arr + count) << " ";
+  }
+  std::cout << std::endl;
+  return;
+}
+
+//this program uses a function to duplicate array
+void duplicate_array() {
+  const int SIZE1 = 5, SIZE2 = 7, SIZE3 = 10;
+  //define three arrays
+  int array1[SIZE1] = {10, 20, 30, 40, 50};
+  int array2[SIZE2] = {1, 2, 3, 4, 5, 6, 7};
+  int array3[SIZE3] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+
+  int *dup1, *dup2, *dup3;
+  dup1 = duplication(array1, SIZE1);
+  dup2 = duplication(array2, SIZE2);
+  dup3 = duplication(array3, SIZE3);
+  std::cout << "Here are the original array content:" << std::endl;
+  display_array(array1, SIZE1);
+  display_array(array2, SIZE2);
+  display_array(array3, SIZE3);
+
+  std::cout << "Here are the duplicate array content:" << std::endl;
+  display_array(dup1, SIZE1);
+  display_array(dup2, SIZE2);
+  display_array(dup3, SIZE3);
+
+  delete [] dup1;
+  delete [] dup2;
+  delete [] dup3;
+  dup1 = 0;
+  dup2 = 0;
+  dup3 = 0;
+}
+
+void showArray(const int arr[], int size) {
+  for(int count=0; count < size; count++) {
+    std::cout << arr[count] << " ";
+  }
+  std::cout << std::endl;
+}
+
+void showArrPtr(int *arr[], int size) {
+  for(int count=0; count < size; count++) {
+    std::cout << **(arr + count) << " ";
+  }
+  std::cout << std::endl;
+}
+
+void arr_select_sort(int *ptr[], int size) { 
+  int* minElement;
+  int minIndex;
+
+  for(int count=0; count < size; count++) {
+      minIndex = count;
+      minElement = *(ptr+count);
+      for(int index = count + 1; index < size; index++) {
+        if(**(ptr + index) < *minElement) {
+          minElement = *(ptr + index);
+          minIndex = index;
+        }
+      }
+      *(ptr + minIndex) = *(ptr + count);
+      *(ptr + count)    = minElement;
+  }
+}
+
+void sort_array() {
+  const int NUM_DONATIONS = 10;
+  int donations[NUM_DONATIONS] = {1000, 2000, 200, 100, 10, 20, 50, 80, 88, 89};
+
+  int *arrPtr[NUM_DONATIONS];
+
+  //Each element of arrPtr will point to corresponding element in donations array
+  for(int count=0; count < NUM_DONATIONS; count++) {
+    *(arrPtr + count) = &donations[count];
+  }
+  arr_select_sort(arrPtr, NUM_DONATIONS);
+  std::cout << "Donations in original order: " << std::endl;
+  showArray(donations, NUM_DONATIONS);
+
+  std::cout << "Donations in ascending order: " << std::endl;
+  showArrPtr(arrPtr, NUM_DONATIONS);
+  return;
+}
 
 #endif

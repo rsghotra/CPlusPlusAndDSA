@@ -2,6 +2,6 @@
 #include "Utils.h"
 
 int main() {
-  create_random_num_array();
+  sort_array();
   return 0;
 }
