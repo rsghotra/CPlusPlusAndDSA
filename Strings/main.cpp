@@ -3,6 +3,6 @@
 
 int main() {
 
-    calculate_area_of_circle();
+    is_prime();
     return 0;
 }
