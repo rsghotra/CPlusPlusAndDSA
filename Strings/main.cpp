@@ -3,6 +3,6 @@
 
 int main() {
 
-    is_prime();
+    validate_customer_name();
     return 0;
 }
