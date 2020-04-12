@@ -37,7 +37,7 @@ void print_list(LinkedList *ll) {
 
 void insert_at_last(LinkedList *ll, Node *node) {
     node->next = ll->last->next;
-    ll->last->next = n;
+    ll->last->next = node;
     ll->last = node;
 }
 
