@@ -25,7 +25,7 @@ CircularLL* init_circular_linked_list(int key) {
     CircularLL *c = new CircularLL();
     c->last = node;
     return c;
-}
+
 
 void insert_after(Node *n, Node *a) {
     n->next = a->next;
