@@ -5,40 +5,26 @@ struct Node {
     Node *next;
 };
 
-struct LinkedList {
+struct CircularLL {
     Node *last;
 };
 
-Node* make_node(int n) {
+Node* make_node(int data) {
     Node* node = new Node();
-    node->data = n;
+    node->data = data;
     node->next = NULL;
     return node;
 }
 
-LinkedList* init_circular_linked_list(int n) {
-    Node * node = make_node(10);
+//initializing a circular linked list.
+CircularLL* init_circular_linked_list(int key) {
+    Node *node = make_node(key);
+    //now making it a circular node;
     node->next = node;
-    LinkedList *ll = new LinkedList();
-    ll->last = node;
-    return ll;
-}
-
-void print_list(LinkedList *ll) {
-    Node *temp = ll->last;
-    std::cout << temp->data << " ";
-    temp = temp->next;
-    while(temp != ll->last) {
-        std::cout << temp->data << " ";
-        temp = temp->next;
-    }
-    std::cout << "\n";
-}
-
-void insert_at_last(LinkedList *ll, Node *node) {
-    node->next = ll->last->next;
-    ll->last->next = n;
-    ll->last = node;
+    //node is ready --> blessing with last pointer to make it circular linked list.
+    CircularLL *c = new CircularLL();
+    c->last = node;
+    return c;
 }
 
 void insert_after(Node *n, Node *a) {
@@ -46,52 +32,75 @@ void insert_after(Node *n, Node *a) {
     a->next = n;
 }
 
-void delete_node(LinkedList *ll, Node *node) {
-    Node *temp = ll->last;
-    while(temp->next != node) {
-        temp = temp->next;
-    }
-    //we just before the node which is to be deleted. It could be only node it self.
-    //if we are removing last node.
-    if(ll->last == node) {
-        //if only one node
-        if(node->next == node) {
-            ll->last = NULL;
-        } else {
-            temp->next = ll->last->next;
-            ll->last = temp;
-        }
-    } else {
-        temp->next = node->next;
-    }
-    delete node;
+void insert_at_last(CircularLL *cll, Node *n) {
+    n->next = cll->last->next;
+    cll->last->next = n;
+    cll->last = n;
 }
 
+void print_cll(CircularLL *cll) {
+    //print of circular is tricky too. We have to first traverse on step more 
+    //but print the last node first.
+    Node *temp = cll->last;
+    std::cout << temp->data << std::endl;
+    temp = temp->next;
+    while(temp != cll->last) {
+        std::cout << temp->data << std::endl;
+        temp=temp->next;
+    }
+    std::cout << std::endl;
+}
+
+void delete_node(CircularLL *cll, Node *n) {
+    //interesting delete in circulat linked list.
+    /*
+        - First we traverse up to node-1. This is universal to every delete operation.
+        - Once we are are n-1th node. We have two use cases
+            - If node to be deleted is the last node
+                - if node is the only node in the list
+                - else standard list
+            - else node is middle node, standard delection applies
+    */
+   Node *temp = cll->last;
+   while(temp->next != n) {
+       temp = temp->next;
+   }
+   if(temp->next == cll->last) {
+    //means last node
+    //if it the only node in the list
+    if(temp->next == temp) {
+        cll->last = NULL;
+    } else {
+        temp->next = cll->last->next;
+        cll->last = temp;
+    }
+   } else {
+       //standard middle deletion
+       temp->next = temp->next->next;
+   }
+   delete n;
+}
 
 int main() {
-    LinkedList *ll = init_circular_linked_list(10);
-
+    CircularLL *cll = init_circular_linked_list(10);
     Node *a, *b, *c;
-    a=make_node(20);
-    b=make_node(30);
-    c=make_node(40);
-    ll->last->next = a;
+    a = make_node(20);
+    b = make_node(30);
+    c = make_node(40);
+    cll->last->next = a;
     a->next = b;
     b->next = c;
-    c->next = ll->last;
-    print_list(ll);
-
-    Node *z;
-    z = make_node(50);
+    c->next = cll->last;
+    print_cll(cll);
+    Node *z = make_node(50);
     insert_after(z, c);
     z = make_node(25);
     insert_after(z, a);
     z = make_node(100);
-    insert_at_last(ll, z);
-
-    print_list(ll);
-    delete_node(ll, ll->last);
-    delete_node(ll, b);
-    print_list(ll);
+    insert_at_last(cll, z);
+    print_cll(cll);
+    delete_node(cll, cll->last);
+    delete_node(cll, b);
+    print_cll(cll);
     return 0;
 }

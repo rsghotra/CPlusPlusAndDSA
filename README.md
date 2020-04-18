@@ -1,2 +1,2 @@
 # CPlusPlus
-C++ Network Applications &amp; Programs
+C++ Data Structure and Algorithms Implementation.
