@@ -1,0 +1,10 @@
+Machine Learning Pipeline:
+
+https://www.datanami.com/2018/09/05/how-to-build-a-better-machine-learning-pipeline/
+https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7
+https://towardsdatascience.com/being-a-data-scientist-does-not-make-you-a-software-engineer-c64081526372
+https://towardsdatascience.com/i-had-no-idea-how-to-build-a-machine-learning-pipeline-but-heres-what-i-figured-f3a7773513a
+https://machinelearningmastery.com/machine-learning-in-python-step-by-step/
+https://towardsdatascience.com/the-7-steps-of-machine-learning-2877d7e5548e 
+https://towardsdatascience.com/workflow-of-a-machine-learning-project-ec1dba419b94
+https://www.kdnuggets.com/2018/12/machine-learning-project-checklist.html
