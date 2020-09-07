@@ -1,18 +1,19 @@
 #include <iostream>
+using namespace std;
 
-struct TreeNode {
+struct Node {
+    Node* parent;
+    Node* left;
+    Node* right;
     int data;
-    TreeNode *parent;
-    TreeNode *left;
-    TreeNode *right;
 };
 
-TreeNode* make_tree_node(int data) {
-    TreeNode *tNode = new TreeNode();
-    tNode->data = data;
-    tNode->left = NULL;
-    tNode->right = NULL;
-    return tNode;
+Node* make_new_tree_node(int data) {
+    Node* node = new Node();
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
 }
 
 int main() {

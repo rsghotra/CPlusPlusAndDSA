@@ -8,8 +8,12 @@ NOTES
 4. Class can not become friend of a function
 5. Friendship is NOT mutual. If class A is friend of B, then B doesn't become friend automatically
 6. Friendship is not inherited.
-7. It is not standard practice in OOP to have Friend class BUT only in some circumstances:
-    a)
+7. It is not standard practice in OOP to have Friend class BUT only in some circumstances.
+8. USE OF FRIEND FUNCTION AND CLASSES IN C++:
+    a) EMPLOYEE-ADMIN RELATIONSHIP
+    b) JUST LIKE CIA
+    c) JUST LIKE CRA REP. I become friend and access their private data. HeHe.
+    d) Friend functions are used to test the class.
 */
 
 #include <iostream>
@@ -54,3 +58,8 @@ int main() {
     cout << gs.get(obj) << endl;
     return 0;
 }
+
+//8. USE OF FRIEND FUNCTION AND CLASSES IN C++
+/*
+
+*/

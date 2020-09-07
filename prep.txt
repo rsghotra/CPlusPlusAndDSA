@@ -8,3 +8,7 @@ https://machinelearningmastery.com/machine-learning-in-python-step-by-step/
 https://towardsdatascience.com/the-7-steps-of-machine-learning-2877d7e5548e 
 https://towardsdatascience.com/workflow-of-a-machine-learning-project-ec1dba419b94
 https://www.kdnuggets.com/2018/12/machine-learning-project-checklist.html
+https://www.alooma.com/blog/building-a-professional-grade-data-pipeline 
+https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9
+https://dzone.com/articles/10-challenges-of-microservices-and-solutions-tips
+https://www.softwaretestinghelp.com/cpp-interview-questions/
